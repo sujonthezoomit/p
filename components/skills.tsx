@@ -410,11 +410,11 @@ const SkillCard = ({ skill, index, isHovered, onHover }: SkillCardProps) => {
             animate={{ scale: isHovered ? 1.1 : 1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <Badge 
+            {/* <Badge 
               className={`bg-gradient-to-r ${skill.color} text-white border-0 shadow-md`}
             >
               {skill.level}%
-            </Badge>
+            </Badge> */}
           </motion.div>
         </CardTitle>
       </CardHeader>

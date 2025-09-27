@@ -176,8 +176,7 @@ export default function Projects() {
             Portfolio
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400 bg-clip-text text-transparent">
-            Featured
-            <span className="block mt-2">Projects</span>
+            Featured Projects
           </h2>
           <p className="text-lg md:text-xl text-cyan-700 dark:text-cyan-300 max-w-3xl mx-auto leading-relaxed">
             A showcase of my recent work, demonstrating expertise across the
