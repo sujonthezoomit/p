@@ -159,7 +159,7 @@ export default function About() {
           {[
             { number: "6+", label: "Months Experience" },
             { number: "10+", label: "Projects Completed" },
-            { number: "8+", label: "Technologies" },
+            { number: "15+", label: "Technologies" },
             { number: "100%", label: "Dedication" }
           ].map((stat, index) => (
             <Card key={index} className="text-center p-6 border-cyan-100 dark:border-cyan-900 bg-cyan-50/50 dark:bg-cyan-950/20">

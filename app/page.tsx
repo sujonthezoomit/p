@@ -1,51 +1,55 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Navbar from '@/components/navbar';
-import Hero from '@/components/hero';
-import About from '@/components/about';
-import Skills from '@/components/skills';
-import Projects from '@/components/projects';
-import Experience from '@/components/experience';
-import Contact from '@/components/contact';
-import Footer from '@/components/footer';
-import { Button } from '@/components/ui/button';
-import { ArrowUp } from 'lucide-react';
+import { useState, useEffect } from "react";
+import Navbar from "@/components/navbar";
+import Hero from "@/components/hero";
+import About from "@/components/about";
+import Skills from "@/components/skills";
+import Projects from "@/components/projects";
+import Experience from "@/components/experience";
+import Contact from "@/components/contact";
+import Footer from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import { ArrowUp } from "lucide-react";
+import EducationCourses from "@/components/EducationCourses";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  console.log(showScrollTop)
+  console.log(showScrollTop);
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className='bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950 dark:to-slate-900'>
+      <main className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950 dark:to-slate-900">
         <Hero />
         <About />
         <Skills />
         <Projects />
         <Experience />
+        <div id="educationCourses">
+          <EducationCourses />
+        </div>
         <Contact />
       </main>
       <Footer />
-      
+
       {showScrollTop && (
         <Button
           onClick={scrollToTop}

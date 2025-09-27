@@ -1,11 +1,104 @@
-import React from 'react';
+'use client';
 
-const footer = () => {
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react';
+
+const socialLinks = [
+  { icon: Github, href: '#', label: 'GitHub' },
+  { icon: Linkedin, href: '#', label: 'LinkedIn' },
+  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Mail, href: 'mailto:sujan25854@gmail.com', label: 'Email' }
+];
+
+const quickLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' }
+];
+
+export default function Footer() {
+  const scrollToSection = (href: string) => {
+    const element = document.getElementById(href.replace('#', ''));
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div>
-      
-    </div>
-  );
-};
+    <footer className="bg-cyan-950 text-white border-t border-cyan-500">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-8">
+          {/* About */}
+          <div>
+            <h3 className="text-2xl font-bold text-cyan-400 mb-4">
+              Md. Sujon Mia
+            </h3>
+            <p className="text-cyan-100 mb-4">
+              MERN Stack Developer passionate about building responsive, scalable, and modern web applications.
+            </p>
+            <div className="flex gap-2">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white transition-all"
+                  >
+                    <social.icon className="h-4 w-4" />
+                  </Button>
+                </a>
+              ))}
+            </div>
+          </div>
 
-export default footer;
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-semibold mb-4 text-cyan-400">Quick Links</h4>
+            <div className="grid grid-cols-2 gap-2">
+              {quickLinks.map((link, index) => (
+                <button
+                  key={index}
+                  onClick={() => scrollToSection(link.href)}
+                  className="text-cyan-100 hover:text-cyan-300 text-left transition-colors"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-semibold mb-4 text-cyan-400">Get In Touch</h4>
+            <div className="space-y-2 text-cyan-100">
+              <p>📧 sujan25854@gmail.com</p>
+              <p>📱 +8801790876529</p>
+              <p>📍 Rangpur, Bangladesh</p>
+            </div>
+            <div className="mt-4 text-cyan-200 text-sm">
+              Open to new projects and collaborations.
+            </div>
+          </div>
+        </div>
+
+        <Separator className="my-8 border-cyan-700" />
+
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-cyan-200 text-sm">
+            © {new Date().getFullYear()} Md. Sujon Mia. All rights reserved.
+          </div>
+          <div className="flex items-center gap-1 text-cyan-200 text-sm">
+            Built with <Heart className="h-4 w-4 text-red-500 mx-1" /> Next.js & Tailwind CSS
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
