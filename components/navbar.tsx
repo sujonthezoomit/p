@@ -84,7 +84,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="flex items-center space-x-1 bg-background/80 backdrop-blur-sm rounded-full p-1 border border-cyan-500/20">
               {navItems.map((item) => (
                 <button
@@ -129,7 +129,7 @@ export default function Navbar() {
             </Button>
 
             {/* Mobile Navigation */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <Button

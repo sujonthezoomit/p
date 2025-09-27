@@ -30,7 +30,7 @@ const highlights = [
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-950">
+    <section id="about" className="py-20  dark:bg-slate-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <motion.div

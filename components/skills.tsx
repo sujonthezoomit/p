@@ -159,7 +159,7 @@ export default function ProfessionalSkillsSection() {
   return (
     <section 
       id="skills" 
-      className="py-24 bg-gradient-to-br from-slate-50 via-white to-cyan-50/40 dark:from-slate-950 dark:via-slate-900 dark:to-cyan-950/30"
+      className="py-24 container mx-auto dark:via-slate-900 dark:to-cyan-950/30"
       aria-label="Technical Skills Section"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">

@@ -131,7 +131,7 @@ const CertificationCard: React.FC<{ cert: Certification }> = ({ cert }) => (
 // ------------------------
 const EducationCourses: React.FC = () => {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-20 lg:min-h-screen">
+    <section className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-20 lg:min-h-screen">
       {/* Header */}
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold text-white sm:text-4xl">

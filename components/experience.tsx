@@ -47,7 +47,7 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 relative overflow-hidden">
+    <section id="experience" className="py-20 container mx-auto relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background"></div>
       <div className="absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
