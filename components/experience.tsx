@@ -55,7 +55,7 @@ export default function Experience() {
   const BADGE_BG_CLASS = 'bg-cyan-900/10 dark:bg-cyan-900/30 border-cyan-300 dark:border-cyan-800';
   
   return (
-    <section id="experience" className="py-20 container mx-auto relative overflow-hidden">
+    <section id="experience" className="py-10 md:py-20 container mx-auto relative overflow-hidden">
       
       {/* Background Elements (Using subtle cyan blur) */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background"></div>
@@ -68,7 +68,7 @@ export default function Experience() {
         <div className="text-center mb-16">
           <Badge
             variant="secondary"
-            className={`mb-4 px-4 py-2 text-sm font-medium ${BADGE_BG_CLASS} inline-flex items-center ${CYCLIC_ACCENT_TEXT}`}
+            className={`mb-4 px-4 py-2 text-sm font-medium text-white inline-flex items-center bg-cyan-950`}
           >
             <Target className="w-4 h-4 mr-2" />
             Career Timeline

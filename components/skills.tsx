@@ -155,6 +155,7 @@ export default function UnifiedSkillsSection() {
             {SKILLS_LIST.map((skill, index) => (
               <motion.div
                 key={skill.name}
+                // @ts-expect-error 
                 variants={itemVariants}
                 custom={index}
               >

@@ -158,39 +158,55 @@ const categories = ['All', 'Full Stack', 'Frontend', 'Backend'];
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedProject, setSelectedProject] = useState<IProject>();
+  const [selectedProject, setSelectedProject] = useState<IProject | undefined>(undefined); // Ensure initial state is undefined
 
   const filteredProjects = projects.filter(
     (project) =>
       selectedCategory === 'All' || project.category === selectedCategory
   );
 
+  // --- Theme-related constants for consistency ---
+  const TEXT_WHITE = 'text-white';
+  const CYAN_PRIMARY_TEXT_LIGHT = 'text-cyan-100'; // For header badges
+  const CYAN_TITLE_GRADIENT_DARK_BG = 'bg-gradient-to-r from-white to-gray-200'; // White gradient against dark background
+  const BUTTON_ACTIVE_GRADIENT = 'bg-gradient-to-r from-cyan-800 to-cyan-900';
+  const BUTTON_OUTLINE_CLASSES = 'border-cyan-700 text-white hover:bg-cyan-800'; // Buttons for main projects card
+  const CARD_BORDER_COLOR = 'border-cyan-700'; // Card borders
+  const CARD_BACKGROUND = 'bg-gray-900'; // Dark background for cards
+  const CARD_HOVER_SHADOW = 'hover:shadow-cyan-900/50';
+  const BADGE_FULLSTACK_GRADIENT = 'bg-gradient-to-r from-cyan-800 to-teal-700';
+  const BADGE_FRONTEND_BACKEND_BG = 'bg-cyan-800/50'; // For category badges in cards
+  const DIALOG_BACKGROUND = 'bg-cyan-950'; // Very deep cyan for dialog background
+  const DIALOG_BORDER = 'border-cyan-700';
+  const DIALOG_HEADING_TEXT = 'text-cyan-200'; // Lighter cyan for dialog headings
+  const DIALOG_BODY_TEXT = 'text-white';
+  const DIALOG_FEATURE_BULLET = 'bg-cyan-500'; // Feature bullet color in dialog
+  const DIALOG_TECH_BADGE_BG = 'bg-cyan-800';
+  const DIALOG_TECH_BADGE_BORDER = 'border-cyan-600';
+  const CYAN_BORDER = 'border-cyan-600';
+  const DIALOG_BUTTON_GRADIENT = 'bg-gradient-to-r from-cyan-700 to-cyan-800 hover:from-cyan-600 hover:to-cyan-700';
+  const DIALOG_OUTLINE_BUTTON_CLASSES = 'border-white text-white hover:bg-cyan-800';
+
+
   return (
-    <section
-      id="projects"
-      className="py-20 "
-      // 1. Updated Background/Border colors for the section (not applicable here, but general theme)
-    >
+    <section id="projects" className=" py-10 md:py-20 bg-gray-950">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          {/* 2. Header Badge Update */}
           <Badge
             variant="secondary"
-            className="mb-4 px-4 py-1 bg-cyan-900/10 text-cyan-900 dark:bg-cyan-900 dark:text-cyan-300 font-medium border border-cyan-300 dark:border-cyan-800"
+            className={`mb-4 px-4 py-1 ${BADGE_FULLSTACK_GRADIENT} ${TEXT_WHITE} font-medium border ${CYAN_BORDER}`}
           >
             Portfolio
           </Badge>
-          {/* 3. Title Text Gradient Update */}
-          <h2 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent mb-4">
+          <h2 className={`text-3xl md:text-4xl font-extrabold ${CYAN_TITLE_GRADIENT_DARK_BG} bg-clip-text text-transparent mb-4`}>
             Featured Projects
           </h2>
-          <p className="text-[18px] text-slate-700 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className={`text-[18px] ${TEXT_WHITE}/80 max-w-3xl mx-auto leading-relaxed`}>
             A showcase of my recent work, demonstrating expertise across the full
             development stack and various domains.
           </p>
         </div>
 
-        {/* 4. Category Filter Buttons Update */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <Button
@@ -199,8 +215,8 @@ export default function Projects() {
               onClick={() => setSelectedCategory(category)}
               className={`rounded-full px-6 py-2 font-medium transition-all duration-300 hover:scale-105 ${
                 selectedCategory === category
-                  ? 'bg-gradient-to-r from-cyan-900 to-teal-900 text-white shadow-lg shadow-cyan-900/40' // Active: Deep Cyan Gradient
-                  : 'border-cyan-800 text-cyan-900 dark:border-cyan-700 dark:text-white hover:border-cyan-900 dark:hover:border-cyan-500 hover:bg-cyan-50 dark:hover:bg-cyan-900/50' // Outline: Cyan-900 text/border
+                  ? `${BUTTON_ACTIVE_GRADIENT} ${TEXT_WHITE} shadow-lg shadow-cyan-900/40`
+                  : `${BUTTON_OUTLINE_CLASSES} bg-transparent`
               }`}
             >
               {category}
@@ -212,7 +228,7 @@ export default function Projects() {
           {filteredProjects.map((project: IProject) => (
             <Card
               key={project.id}
-              className="group overflow-hidden border border-cyan-200 dark:border-cyan-800 bg-white dark:bg-slate-900 hover:shadow-xl hover:shadow-cyan-900/15 transition-all duration-500 hover:-translate-y-2"
+              className={`group overflow-hidden ${CARD_BORDER_COLOR} ${CARD_BACKGROUND} hover:shadow-xl ${CARD_HOVER_SHADOW} transition-all duration-500 hover:-translate-y-2`}
             >
               <div className="aspect-video overflow-hidden relative">
                 <img
@@ -220,41 +236,35 @@ export default function Projects() {
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                {/* Image Overlay: Deep Cyan-900 */}
                 <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between mb-2">
-                  {/* Card Title: Deep Cyan-900 */}
-                  <CardTitle className="text-xl font-bold text-cyan-900 dark:text-cyan-100">
+                  <CardTitle className={`text-xl font-bold ${CYAN_PRIMARY_TEXT_LIGHT}`}>
                     {project.title}
                   </CardTitle>
-                  {/* Category Badge Logic Update */}
                   <Badge
                     variant="secondary"
                     className={
                       project.category === 'Full Stack'
-                        ? 'bg-gradient-to-r from-cyan-900 to-teal-700 text-white font-semibold' // Full Stack: Deep Cyan Gradient
-                        : project.category === 'Frontend'
-                        ? 'bg-cyan-100 text-cyan-900 dark:bg-cyan-900/30 dark:text-cyan-300' // Frontend: Light/Dark Cyan-900
-                        : 'bg-teal-100 text-teal-900 dark:bg-teal-900/30 dark:text-teal-300' // Backend: Teal for contrast
+                        ? `${BADGE_FULLSTACK_GRADIENT} ${TEXT_WHITE} font-semibold`
+                        : `${BADGE_FRONTEND_BACKEND_BG} ${TEXT_WHITE}`
                     }
                   >
                     {project.category}
                   </Badge>
                 </div>
-                <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                <p className={`${TEXT_WHITE}/80 text-sm leading-relaxed line-clamp-2`}>
                   {project.description}
                 </p>
               </CardHeader>
               <CardContent className="space-y-4">
-                {/* Tech Badges Update: Border and Text using Cyan-900 theme */}
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.slice(0, 3).map((tech) => (
                     <Badge
                       key={tech}
                       variant="outline"
-                      className="text-xs border-cyan-800 text-cyan-900 dark:border-cyan-700 dark:text-cyan-300 bg-cyan-50/50 dark:bg-cyan-900/20"
+                      className={`text-xs ${BADGE_FRONTEND_BACKEND_BG} ${TEXT_WHITE} ${CARD_BORDER_COLOR}`}
                     >
                       {tech}
                     </Badge>
@@ -262,18 +272,17 @@ export default function Projects() {
                   {project.technologies.length > 3 && (
                     <Badge
                       variant="outline"
-                      className="text-xs border-cyan-800 text-cyan-900 dark:border-cyan-700 dark:text-cyan-300 bg-cyan-50/50 dark:bg-cyan-900/20"
+                      className={`text-xs ${BADGE_FRONTEND_BACKEND_BG} ${TEXT_WHITE} ${CARD_BORDER_COLOR}`}
                     >
                       +{project.technologies.length - 3}
                     </Badge>
                   )}
                 </div>
-                <div className="flex gap-2">
-                  {/* Outline Buttons Update: Border and Text using Cyan-900 theme */}
+                <div className="flex flex-wrap gap-2">
                   <Button
                     size="sm"
                     variant="outline"
-                    className="flex-1 border-cyan-800 text-cyan-900 dark:border-cyan-700 dark:text-cyan-300 hover:bg-cyan-50 dark:hover:bg-cyan-900/50"
+                    className={`flex-1 ${BUTTON_OUTLINE_CLASSES} bg-transparent`}
                   >
                     <Github className="w-4 h-4 mr-2" />
                     Code
@@ -281,27 +290,26 @@ export default function Projects() {
                   <Button
                     size="sm"
                     variant="outline"
-                    className="flex-1 border-cyan-800 text-cyan-900 dark:border-cyan-700 dark:text-cyan-300 hover:bg-cyan-50 dark:hover:bg-cyan-900/50"
+                    className={`flex-1 ${BUTTON_OUTLINE_CLASSES} bg-transparent`}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Live
                   </Button>
                   <Dialog>
                     <DialogTrigger asChild>
-                      {/* Primary Detail Button Update: Deep Cyan Gradient */}
                       <Button
                         size="sm"
                         variant="default"
-                        className="flex-1 bg-gradient-to-r from-cyan-900 to-teal-700 hover:from-cyan-800 hover:to-teal-600 text-white shadow-md shadow-cyan-900/25"
+                        className={`flex-1 ${BUTTON_ACTIVE_GRADIENT} ${TEXT_WHITE} shadow-md shadow-cyan-900/25`}
                         onClick={() => setSelectedProject(project)}
                       >
                         <Eye className="w-4 h-4 mr-2" />
                         Details
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-white dark:bg-slate-900 border-cyan-800 dark:border-cyan-700">
+                    <DialogContent className={`max-w-4xl max-h-[80vh] overflow-y-auto ${DIALOG_BACKGROUND} ${DIALOG_BORDER}`}>
                       <DialogHeader>
-                        <DialogTitle className="text-2xl font-bold text-cyan-900 dark:text-cyan-100">
+                        <DialogTitle className={`text-2xl font-bold ${TEXT_WHITE}`}>
                           {project.title}
                         </DialogTitle>
                       </DialogHeader>
@@ -313,16 +321,15 @@ export default function Projects() {
                             className="w-full h-64 object-cover rounded-lg"
                           />
                           <div>
-                            {/* Detail Headings: Deep Cyan-900 */}
-                            <h3 className="text-lg font-semibold mb-2 text-cyan-900 dark:text-cyan-300">
+                            <h3 className={`text-lg font-semibold mb-2 ${DIALOG_HEADING_TEXT}`}>
                               Overview
                             </h3>
-                            <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                            <p className={`${DIALOG_BODY_TEXT} leading-relaxed`}>
                               {selectedProject.details.overview}
                             </p>
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold mb-2 text-cyan-900 dark:text-cyan-300">
+                            <h3 className={`text-lg font-semibold mb-2 ${DIALOG_HEADING_TEXT}`}>
                               Key Features
                             </h3>
                             <ul className="space-y-2">
@@ -330,10 +337,9 @@ export default function Projects() {
                                 (feature, index) => (
                                   <li
                                     key={index}
-                                    className="flex items-center gap-3 text-slate-700 dark:text-slate-300"
+                                    className={`flex items-center gap-3 ${DIALOG_BODY_TEXT}`}
                                   >
-                                    {/* Feature Bullet: Deep Cyan-500 */}
-                                    <div className="w-2 h-2 bg-cyan-700 dark:bg-cyan-500 rounded-full flex-shrink-0"></div>
+                                    <div className={`w-2 h-2 ${DIALOG_FEATURE_BULLET} rounded-full flex-shrink-0`}></div>
                                     <span>{feature}</span>
                                   </li>
                                 )
@@ -341,16 +347,15 @@ export default function Projects() {
                             </ul>
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold mb-2 text-cyan-900 dark:text-cyan-300">
+                            <h3 className={`text-lg font-semibold mb-2 ${DIALOG_HEADING_TEXT}`}>
                               Technologies Used
                             </h3>
-                            {/* Detail Tech Badges: Cyan-900 Theme */}
                             <div className="flex flex-wrap gap-2">
                               {selectedProject.technologies.map((tech) => (
                                 <Badge
                                   key={tech}
                                   variant="secondary"
-                                  className="bg-cyan-900/10 text-cyan-900 dark:bg-cyan-900 dark:text-cyan-300 border border-cyan-300 dark:border-cyan-800"
+                                  className={`${DIALOG_TECH_BADGE_BG} ${TEXT_WHITE} ${DIALOG_TECH_BADGE_BORDER}`}
                                 >
                                   {tech}
                                 </Badge>
@@ -358,31 +363,29 @@ export default function Projects() {
                             </div>
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold mb-2 text-cyan-900 dark:text-cyan-300">
+                            <h3 className={`text-lg font-semibold mb-2 ${DIALOG_HEADING_TEXT}`}>
                               Challenges & Solutions
                             </h3>
-                            <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                            <p className={`${DIALOG_BODY_TEXT} leading-relaxed`}>
                               {selectedProject.details.challenges}
                             </p>
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold mb-2 text-cyan-900 dark:text-cyan-300">
+                            <h3 className={`text-lg font-semibold mb-2 ${DIALOG_HEADING_TEXT}`}>
                               Outcome
                             </h3>
-                            <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                            <p className={`${DIALOG_BODY_TEXT} leading-relaxed`}>
                               {selectedProject.details.outcome}
                             </p>
                           </div>
                           <div className="flex gap-4 pt-4">
-                            {/* Dialog Button Update: Deep Cyan Gradient */}
-                            <Button className="flex-1 bg-gradient-to-r from-cyan-900 to-teal-700 hover:from-cyan-800 hover:to-teal-600">
+                            <Button className={`flex-1 ${DIALOG_BUTTON_GRADIENT} ${TEXT_WHITE}`}>
                               <Github className="w-4 h-4 mr-2" />
                               View on GitHub
                             </Button>
-                            {/* Dialog Outline Button Update: Cyan-900 Theme */}
                             <Button
                               variant="outline"
-                              className="flex-1 border-cyan-800 text-cyan-900 dark:border-cyan-700 dark:text-cyan-300 hover:bg-cyan-50 dark:hover:bg-cyan-900/50"
+                              className={`flex-1 ${DIALOG_OUTLINE_BUTTON_CLASSES} bg-transparent`}
                             >
                               <ExternalLink className="w-4 h-4 mr-2" />
                               Live Demo
@@ -398,12 +401,11 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* 5. Footer Button Update: Cyan-900 theme */}
         <div className="text-center mt-12">
           <Button
             size="lg"
             variant="outline"
-            className="group rounded-full px-8 py-3 border-cyan-800 text-cyan-900 dark:border-cyan-700 dark:text-cyan-300 hover:bg-cyan-50 dark:hover:bg-cyan-900/50 font-medium hover:border-cyan-900 dark:hover:border-cyan-500"
+            className={`group rounded-full px-8 py-3 ${BUTTON_OUTLINE_CLASSES} bg-transparent font-medium`}
           >
             <Github className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
             View More on GitHub

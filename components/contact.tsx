@@ -99,7 +99,7 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <Card className={`hover:shadow-xl ${CARD_HOVER_SHADOW} transition-all duration-300 border-2 ${BORDER_ACCENT} shadow-lg ${SHADOW_CYAN} bg-gradient-to-br ${CARD_BG_GRADIENT}`}>
+          <Card className={`hover:shadow-xl  ${CARD_HOVER_SHADOW} transition-all duration-300 border-2 ${BORDER_ACCENT} shadow-lg ${SHADOW_CYAN} bg-gradient-to-br ${CARD_BG_GRADIENT}`}>
             <CardHeader className="pb-4">
               <CardTitle className={`text-2xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent`}>
                 Send a Message
@@ -186,7 +186,7 @@ export default function Contact() {
             {/* Contact Info Card */}
             <Card className={`hover:shadow-xl ${CARD_HOVER_SHADOW} transition-all duration-300 border-2 ${BORDER_ACCENT} shadow-lg ${SHADOW_CYAN} bg-gradient-to-br ${CARD_BG_GRADIENT}`}>
               <CardHeader>
-                <CardTitle className={`flex items-center gap-2 ${PRIMARY_CYAN_ACCENT_TEXT}`}>
+                <CardTitle className={`flex items-center text-[16px] md:text-2xl gap-2 ${PRIMARY_CYAN_ACCENT_TEXT}`}>
                   <Mail className="h-5 w-5" />
                   Contact Information
                 </CardTitle>
@@ -196,9 +196,9 @@ export default function Contact() {
                   <a 
                     key={index} 
                     href={info.href}
-                    className="flex items-center gap-4 p-3 rounded-lg hover:bg-cyan-900/30 transition-all duration-200 group"
+                    className="flex flex-col md:flex-row md:items-center gap-4 p-3 rounded-lg hover:bg-cyan-900/30 transition-all duration-200 group"
                   >
-                    <div className={`w-12 h-12 ${BUTTON_GRADIENT_BG} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+                    <div className={` w-12 h-12 ${BUTTON_GRADIENT_BG} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
                       <info.icon className="h-5 w-5 text-white" />
                     </div>
                     <div>

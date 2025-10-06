@@ -149,7 +149,7 @@ const CertificationCard: React.FC<{ cert: Certification }> = ({ cert }) => (
 const EducationCourses: React.FC = () => {
   return (
     // Assuming this section is on a dark background, hence text-white is used throughout
-    <section className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-20 lg:min-h-screen bg-gray-950/50">
+    <section className="container mx-auto px-4 md:py-12 sm:px-6 lg:px-8 mt-20 lg:min-h-screen bg-gray-950/50">
       
       {/* Header */}
       <div className="text-center mb-12">

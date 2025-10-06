@@ -38,11 +38,11 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="bg-slate-950">
-        <Hero />
+          <Hero />
         <About />
-        <Skills />
+        <Skills /> 
         <Projects />
-        <Experience />
+         <Experience />  
         <div id="educationCourses">
           <EducationCourses />
         </div>

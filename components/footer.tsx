@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   // --- Strict "all text white, bg cyan" Color Definitions ---
-  const FOOTER_BACKGROUND = 'bg-cyan-950'; // Deep cyan background
+
   const TEXT_COLOR = 'text-white'; // All text is white
   const ACCENT_BORDER = 'border-cyan-700'; // Darker cyan for borders/separators
   const SOCIAL_BUTTON_BORDER = 'border-white'; // White border for social icons
@@ -36,7 +36,7 @@ export default function Footer() {
   const HEART_COLOR = 'text-red-400'; // A softer red against the deep cyan
 
   return (
-    <footer className={`${FOOTER_BACKGROUND} ${TEXT_COLOR} border-t ${ACCENT_BORDER}`}>
+    <footer className={`bg-gradient-to-r from-cyan-700/20 to-teal-600/20 border-cyan-600/30 backdrop-blur-sm ${TEXT_COLOR} border-t ${ACCENT_BORDER}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* About */}

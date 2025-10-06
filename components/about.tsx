@@ -49,7 +49,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 bg-gradient-to-b from-white to-cyan-50 dark:from-slate-950 dark:to-cyan-950/20"
+      className="relative py-12 md:py-24  bg-gradient-to-b from-white to-cyan-50 dark:from-slate-950 dark:to-cyan-950/20"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
@@ -145,7 +145,7 @@ export default function About() {
       </div>
 
       {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-cyan-400/10 dark:bg-cyan-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 max-w-[500px] max-h-[500px] bg-cyan-400/10 dark:bg-cyan-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     </section>
   );
 }
