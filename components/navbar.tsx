@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Moon, Sun, Menu, X, Sparkles } from "lucide-react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 
 const navItems = [
   { href: "#home", label: "Home" },
@@ -57,7 +58,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-xl shadow-2xl border-b border-cyan-500/10"
+          ? "bg-background/95 backdrop-blur-xl shadow-2xl border-b border-cyan-800/10"
           : "bg-transparent"
       }`}
     >
@@ -68,19 +69,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center">
-              <Sparkles className="h-4 w-4 text-white" />
+            <div >
+
+              <Image height={40} width={128} src="https://i.ibb.co.com/G3t6g0ZT/image-removebg-preview.png" className="w-32 h-10" alt="fsadfaf" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
-              SUJON
-            </span>
-            {isScrolled && (
-              <div className="hidden sm:block ml-2 px-2 py-1 bg-cyan-500/10 rounded-full">
-                <span className="text-xs text-cyan-600 dark:text-cyan-400 font-medium">
-                  Full-Stack Dev
-                </span>
-              </div>
-            )}
           </div>
 
           {/* Desktop Navigation */}
@@ -92,7 +84,7 @@ export default function Navbar() {
                   onClick={() => scrollToSection(item.href)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 relative group ${
                     activeSection === item.href.replace("#", "")
-                      ? "text-white bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-cyan-500/25"
+                      ? "text-white bg-gradient-to-r from-cyan-800 to-cyan-700 shadow-lg shadow-cyan-500/25"
                       : "text-muted-foreground hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-cyan-500/10"
                   }`}
                 >
@@ -112,7 +104,7 @@ export default function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="w-10 h-10 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/20 transition-all duration-300 group"
+              className="w-10 h-10 rounded-full bg-cyan-700/10 hover:bg-cyan-800/20 border border-cyan-500/20 transition-all duration-300 group"
             >
               <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-cyan-600 dark:text-cyan-400" />
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-cyan-600 dark:text-cyan-400" />
@@ -121,7 +113,7 @@ export default function Navbar() {
 
             {/* Download Resume Button - Desktop */}
             <Button
-              className="hidden md:flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+              className="hidden md:flex items-center gap-2 bg-gradient-to-r from-cyan-800 to-cyan-900 hover:from-cyan-600 hover:to-cyan-600 text-white shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
               onClick={() => window.open("/resume.pdf", "_blank")}
             >
               <Sparkles className="h-4 w-4" />

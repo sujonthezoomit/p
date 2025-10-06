@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950 dark:to-slate-900">
+      <main className="bg-slate-950">
         <Hero />
         <About />
         <Skills />

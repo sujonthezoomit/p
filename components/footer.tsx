@@ -26,16 +26,25 @@ export default function Footer() {
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // --- Strict "all text white, bg cyan" Color Definitions ---
+  const FOOTER_BACKGROUND = 'bg-cyan-950'; // Deep cyan background
+  const TEXT_COLOR = 'text-white'; // All text is white
+  const ACCENT_BORDER = 'border-cyan-700'; // Darker cyan for borders/separators
+  const SOCIAL_BUTTON_BORDER = 'border-white'; // White border for social icons
+  const SOCIAL_BUTTON_HOVER_BG = 'hover:bg-cyan-800'; // Slightly darker cyan on hover
+  const QUICK_LINK_HOVER_TEXT = 'hover:text-cyan-200'; // Subtle hover for quick links
+  const HEART_COLOR = 'text-red-400'; // A softer red against the deep cyan
+
   return (
-    <footer className="bg-cyan-950 text-white border-t border-cyan-500">
+    <footer className={`${FOOTER_BACKGROUND} ${TEXT_COLOR} border-t ${ACCENT_BORDER}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {/* About */}
           <div>
-            <h3 className="text-2xl font-bold text-cyan-400 mb-4">
+            <h3 className={`text-2xl font-bold ${TEXT_COLOR} mb-4`}>
               Md. Sujon Mia
             </h3>
-            <p className="text-cyan-100 mb-4">
+            <p className={`${TEXT_COLOR} mb-4`}>
               MERN Stack Developer passionate about building responsive, scalable, and modern web applications.
             </p>
             <div className="flex gap-2">
@@ -49,7 +58,7 @@ export default function Footer() {
                   <Button
                     variant="outline"
                     size="icon"
-                    className="border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white transition-all"
+                    className={`${SOCIAL_BUTTON_BORDER} ${TEXT_COLOR} ${SOCIAL_BUTTON_HOVER_BG} ${QUICK_LINK_HOVER_TEXT} transition-all`}
                   >
                     <social.icon className="h-4 w-4" />
                   </Button>
@@ -60,13 +69,13 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4 text-cyan-400">Quick Links</h4>
+            <h4 className={`font-semibold mb-4 ${TEXT_COLOR}`}>Quick Links</h4>
             <div className="grid grid-cols-2 gap-2">
               {quickLinks.map((link, index) => (
                 <button
                   key={index}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-cyan-100 hover:text-cyan-300 text-left transition-colors"
+                  className={`${TEXT_COLOR} ${QUICK_LINK_HOVER_TEXT} text-left transition-colors`}
                 >
                   {link.label}
                 </button>
@@ -76,26 +85,26 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4 text-cyan-400">Get In Touch</h4>
-            <div className="space-y-2 text-cyan-100">
+            <h4 className={`font-semibold mb-4 ${TEXT_COLOR}`}>Get In Touch</h4>
+            <div className={`space-y-2 ${TEXT_COLOR}`}>
               <p>📧 sujan25854@gmail.com</p>
               <p>📱 +8801790876529</p>
               <p>📍 Rangpur, Bangladesh</p>
             </div>
-            <div className="mt-4 text-cyan-200 text-sm">
+            <div className={`mt-4 ${TEXT_COLOR} text-sm`}>
               Open to new projects and collaborations.
             </div>
           </div>
         </div>
 
-        <Separator className="my-8 border-cyan-700" />
+        <Separator className={`my-8 ${ACCENT_BORDER}`} />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-cyan-200 text-sm">
+          <div className={`${TEXT_COLOR} text-sm`}>
             © {new Date().getFullYear()} Md. Sujon Mia. All rights reserved.
           </div>
-          <div className="flex items-center gap-1 text-cyan-200 text-sm">
-            Built with <Heart className="h-4 w-4 text-red-500 mx-1" /> Next.js & Tailwind CSS
+          <div className="flex items-center gap-1 text-white text-sm">
+            Built with <Heart className={`h-4 w-4 ${HEART_COLOR} mx-1`} /> Next.js & Tailwind CSS
           </div>
         </div>
       </div>

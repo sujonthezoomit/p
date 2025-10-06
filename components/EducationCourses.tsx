@@ -47,53 +47,66 @@ const certificationsData: Certification[] = [
     id: 1,
     name: "Complete Web Development",
     platform: "Programming Hero – Jhankar Mahbub",
-    duration: "2023",
-    credentialUrl: "https://www.programming-hero.com/certificate/complete-web-dev",
+    duration: "2024",
+    credentialUrl: "https://drive.google.com/file/d/1lx06sc9uTRzkjgXNXvU_TS0N1K1lexXj/view?usp=sharing",
   },
   {
     id: 2,
     name: "Level 2 Web Development",
     platform: "Programming Hero",
-    duration: "2023",
-    credentialUrl: "https://www.programming-hero.com/certificate/level-2-web-dev",
+    duration: "2024",
+    credentialUrl: "https://drive.google.com/file/d/17kbBS_18-x9E-_a1vGN31-Q5IilaTVc2/view?usp=sharing",
   },
   {
     id: 3,
     name: "Web Design & Development with WordPress",
     platform: "Self/WordPress",
     duration: "2023",
-    credentialUrl: "https://www.programming-hero.com/certificate/wordpress-web-design",
+    credentialUrl: "https://drive.google.com/file/d/1JOcn4cu_nF5nEq0Qau_6IkxdmOjdYTa8/view?usp=sharing",
   },
 ];
+
+// Define strict color classes
+const TEXT_COLOR = 'text-white';
+const ACCENT_TEXT_COLOR = 'text-cyan-600'; // Using 800 for links/Gpa
+const BORDER_COLOR = 'border-cyan-950';
+const SHADOW_COLOR = 'shadow-cyan-900/40';
+const HOVER_BORDER_COLOR = 'hover:border-cyan-800';
+
 
 // ------------------------
 // Reusable Components
 // ------------------------
 const EducationCard: React.FC<{ edu: Education }> = ({ edu }) => (
-  <div className="bg-gradient-to-br from-gray-800 to-gray-700 rounded-xl shadow-lg border border-cyan-900 p-6 hover:shadow-cyan-900/20 hover:border-cyan-700 transition-all duration-300">
+  <div className={`bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl shadow-2xl ${SHADOW_COLOR} ${BORDER_COLOR} p-6 ${HOVER_BORDER_COLOR} transition-all duration-300`}>
     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
-      <h4 className="text-xl font-bold text-white">{edu.degree}</h4>
-      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900 text-cyan-100 border border-cyan-700">
+      <h4 className={`text-xl font-bold ${TEXT_COLOR}`}>{edu.degree}</h4>
+      {/* Duration Badge: Solid Cyan-900 background */}
+      <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-cyan-900 ${TEXT_COLOR} border border-cyan-800`}>
         {edu.duration}
       </span>
     </div>
     <div className="mb-3">
-      <p className="font-semibold text-cyan-100">
+      {/* Institution: White, Location: Cyan-800 accent */}
+      <p className={`font-semibold ${TEXT_COLOR}`}>
         {edu.institution}
-        <span className="text-cyan-300 font-normal"> • {edu.location}</span>
+        <span className={`font-normal ${ACCENT_TEXT_COLOR}`}> • {edu.location}</span>
       </p>
       {edu.gpa && (
-        <p className="text-sm text-cyan-400 font-medium">GPA: {edu.gpa}</p>
+        // GPA: Cyan-800 accent
+        <p className={`text-sm font-medium ${ACCENT_TEXT_COLOR}`}>GPA: {edu.gpa}</p>
       )}
     </div>
     {edu.relevantCoursework && edu.relevantCoursework.length > 0 && (
       <div>
-        <h5 className="font-semibold text-cyan-100 mb-2">Relevant Coursework:</h5>
+        {/* Title: White */}
+        <h5 className={`font-semibold ${TEXT_COLOR} mb-2`}>Relevant Coursework:</h5>
         <div className="flex flex-wrap gap-2">
           {edu.relevantCoursework.map((course, index) => (
+            // Course Badges: Cyan-900/30 background, White text, Cyan-800 border
             <span
               key={index}
-              className="inline-flex items-center px-3 py-1 rounded-lg text-sm bg-gradient-to-r from-cyan-900/30 to-cyan-800/40 text-cyan-200 border border-cyan-700/50 hover:border-cyan-500 transition-colors duration-200"
+              className={`inline-flex items-center px-3 py-1 rounded-lg text-sm bg-cyan-900/30 ${TEXT_COLOR} border border-cyan-800/50 hover:border-cyan-800 transition-colors duration-200`}
             >
               📖 {course}
             </span>
@@ -105,19 +118,23 @@ const EducationCard: React.FC<{ edu: Education }> = ({ edu }) => (
 );
 
 const CertificationCard: React.FC<{ cert: Certification }> = ({ cert }) => (
-  <div className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl shadow-lg border border-cyan-900 p-5 hover:shadow-cyan-900/20 hover:border-cyan-700 transition-all duration-300">
+  <div className={`bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-2xl ${SHADOW_COLOR} ${BORDER_COLOR} p-5 ${HOVER_BORDER_COLOR} transition-all duration-300`}>
+    {/* Certification Name: White */}
     <h4 className="font-bold text-lg text-white mb-2">{cert.name}</h4>
-    <p className="text-cyan-200 text-sm">
-      <span className="font-medium text-cyan-300">Platform:</span> {cert.platform}
+    {/* Platform: White text, Cyan-800 accent for "Platform" label */}
+    <p className={`text-sm ${TEXT_COLOR} mb-1`}>
+      <span className={`font-medium ${ACCENT_TEXT_COLOR}`}>Platform:</span> {cert.platform}
     </p>
-    <span className="text-cyan-300">{cert.duration}</span>
+    {/* Duration: Cyan-800 accent */}
+    <span className={`${ACCENT_TEXT_COLOR}`}>{cert.duration}</span>
     {cert.credentialUrl && (
       <div className="mt-3">
+        {/* View Certificate link: Cyan-800 accent, White hover */}
         <a
           href={cert.credentialUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-cyan-400 underline hover:text-cyan-300 transition-colors duration-200"
+          className={`${ACCENT_TEXT_COLOR} underline hover:${TEXT_COLOR} transition-colors duration-200`}
         >
           View Certificate
         </a>
@@ -131,13 +148,17 @@ const CertificationCard: React.FC<{ cert: Certification }> = ({ cert }) => (
 // ------------------------
 const EducationCourses: React.FC = () => {
   return (
-    <section className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-20 lg:min-h-screen">
+    // Assuming this section is on a dark background, hence text-white is used throughout
+    <section className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-20 lg:min-h-screen bg-gray-950/50">
+      
       {/* Header */}
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-white sm:text-4xl">
+        {/* Main Title: White */}
+        <h2 className={`text-3xl font-bold ${TEXT_COLOR} sm:text-4xl`}>
           Education & Certifications
         </h2>
-        <p className="mt-3 text-lg text-cyan-200">
+        {/* Subtitle: Cyan-800 accent */}
+        <p className={`mt-3 text-lg ${ACCENT_TEXT_COLOR}`}>
           Academic background and professional certifications
         </p>
       </div>
@@ -145,7 +166,8 @@ const EducationCourses: React.FC = () => {
       <div className="grid gap-12 lg:grid-cols-2">
         {/* Education Section */}
         <div className="lg:col-span-1">
-          <h3 className="text-2xl font-semibold text-white mb-6 pb-2 border-b-2 border-cyan-500">
+          {/* Section Title: White, Cyan-800 underline */}
+          <h3 className={`text-2xl font-semibold ${TEXT_COLOR} mb-6 pb-2 border-b-2 border-cyan-800`}>
             📚 Education
           </h3>
           <div className="space-y-6">
@@ -157,7 +179,8 @@ const EducationCourses: React.FC = () => {
 
         {/* Certifications Section */}
         <div className="lg:col-span-1">
-          <h3 className="text-2xl font-semibold text-white mb-6 pb-2 border-b-2 border-cyan-500">
+          {/* Section Title: White, Cyan-800 underline */}
+          <h3 className={`text-2xl font-semibold ${TEXT_COLOR} mb-6 pb-2 border-b-2 border-cyan-800`}>
             🖥️ Certifications
           </h3>
           <div className="space-y-6">
@@ -170,8 +193,9 @@ const EducationCourses: React.FC = () => {
 
       {/* Footer Note */}
       <div className="mt-10 text-center">
-        <p className="text-cyan-200 text-sm bg-cyan-900/20 px-4 py-3 rounded-lg border border-cyan-800">
-          💡 <strong className="text-cyan-100">Note:</strong> Certifications and coursework can be verified through their respective platforms.
+        {/* Footer Note: White text, Cyan-900/20 background, Cyan-800 border */}
+        <p className={`${TEXT_COLOR} text-sm bg-cyan-900/20 px-4 py-3 rounded-lg border border-cyan-800`}>
+          💡 <strong className={ACCENT_TEXT_COLOR}>Note:</strong> Certifications and coursework can be verified through their respective platforms.
         </p>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import { Mail, Phone, MapPin, Send, CheckCircle, Clock, Zap } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Zap } from 'lucide-react'; // Removed unused Clock icon
 import { useToast } from '@/hooks/use-toast';
 
 export default function Contact() {
@@ -39,6 +39,18 @@ export default function Contact() {
     }, 2000);
   };
 
+  // --- Strict Cyan-800/900 Color Definitions for Dark Mode ---
+  const TEXT_WHITE = 'text-white'; // All main text will be white
+  const PRIMARY_CYAN_ACCENT_TEXT = 'text-cyan-600'; // For highlighted cyan text
+  const LIGHTER_CYAN_ACCENT_TEXT = 'text-cyan-600'; // For slightly lighter cyan text if needed, but keeping it close
+  const BORDER_ACCENT = 'border-cyan-800';
+  const BADGE_BG = 'bg-cyan-900/30'; // Darker cyan transparent background for badges
+  const BADGE_BORDER = 'border-cyan-800/50';
+  const BUTTON_GRADIENT_BG = 'bg-gradient-to-r from-cyan-800 to-cyan-900 hover:from-cyan-900 hover:to-cyan-800';
+  const CARD_BG_GRADIENT = 'from-gray-900 to-gray-800'; // Dark background for cards
+  const CARD_HOVER_SHADOW = 'hover:shadow-cyan-900/50';
+  const SHADOW_CYAN = 'shadow-cyan-900/40'; // Consistent shadow color
+
   const contactInfo = [
     {
       icon: Mail,
@@ -61,25 +73,25 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-50/30 via-background to-cyan-100/20 dark:from-cyan-950/10 dark:via-background dark:to-cyan-900/10"></div>
-      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-600/5 rounded-full blur-3xl"></div>
+    <section id="contact" className="py-20 relative overflow-hidden bg-gray-950"> {/* Ensure a consistent dark background */}
+      {/* Background Elements (Unified Cyan blur for a dark background) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-950 to-gray-900"></div> {/* Subtle dark gradient */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-900/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-cyan-800/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <Badge 
             variant="secondary" 
-            className="mb-4 px-4 py-2 text-sm font-medium bg-cyan-500/10 border-cyan-500/20 text-cyan-700 dark:text-cyan-300"
+            className={`mb-4 px-4 py-2 text-sm font-medium ${BADGE_BG} ${BADGE_BORDER} ${PRIMARY_CYAN_ACCENT_TEXT}`}
           >
             <Zap className="w-4 h-4 mr-2" />
             Get In Touch
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Let,s Work <span className="text-cyan-600 dark:text-cyan-400">Together</span>
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent`}>
+            Let,s Work <span className={PRIMARY_CYAN_ACCENT_TEXT}>Together</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className={`text-xl ${TEXT_WHITE}/80 max-w-2xl mx-auto`}>
             Have a project in mind or want to discuss opportunities? 
             I,d love to hear from you. Let,s create something amazing together.
           </p>
@@ -87,18 +99,18 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <Card className="hover:shadow-xl  transition-all duration-300 border-2 shadow-lg bg-background/50 backdrop-blur-sm">
+          <Card className={`hover:shadow-xl ${CARD_HOVER_SHADOW} transition-all duration-300 border-2 ${BORDER_ACCENT} shadow-lg ${SHADOW_CYAN} bg-gradient-to-br ${CARD_BG_GRADIENT}`}>
             <CardHeader className="pb-4">
-              <CardTitle className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-cyan-700 dark:from-cyan-400 dark:to-cyan-500 bg-clip-text text-transparent">
+              <CardTitle className={`text-2xl font-bold bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent`}>
                 Send a Message
               </CardTitle>
-              <p className="text-muted-foreground">Fill out the form and I,ll get back to you soon</p>
+              <p className={`${TEXT_WHITE}/80`}>Fill out the form and I,ll get back to you soon</p>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
               
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">Name</label>
+                    <label htmlFor="name" className={`text-sm font-medium ${LIGHTER_CYAN_ACCENT_TEXT}`}>Name</label>
                     <Input
                       id="name"
                       name="name"
@@ -106,11 +118,11 @@ export default function Contact() {
                       onChange={handleInputChange}
                       placeholder="Your name"
                       required
-                      className="focus:border-cyan-500 focus:ring-cyan-500"
+                      className={`focus:border-cyan-800 focus:ring-cyan-800 bg-gray-700/50 border ${BORDER_ACCENT}/50 ${TEXT_WHITE} placeholder-gray-400`}
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">Email</label>
+                    <label htmlFor="email" className={`text-sm font-medium ${LIGHTER_CYAN_ACCENT_TEXT}`}>Email</label>
                     <Input
                       id="email"
                       name="email"
@@ -119,12 +131,12 @@ export default function Contact() {
                       onChange={handleInputChange}
                       placeholder="your.email@example.com"
                       required
-                      className="focus:border-cyan-500 focus:ring-cyan-500"
+                      className={`focus:border-cyan-800 focus:ring-cyan-800 bg-gray-700/50 border ${BORDER_ACCENT}/50 ${TEXT_WHITE} placeholder-gray-400`}
                     />
                   </div>
               
                 <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">Subject</label>
+                  <label htmlFor="subject" className={`text-sm font-medium ${LIGHTER_CYAN_ACCENT_TEXT}`}>Subject</label>
                   <Input
                     id="subject"
                     name="subject"
@@ -132,11 +144,11 @@ export default function Contact() {
                     onChange={handleInputChange}
                     placeholder="What's this about?"
                     required
-                    className="focus:border-cyan-500 focus:ring-cyan-500"
+                    className={`focus:border-cyan-800 focus:ring-cyan-800 bg-gray-700/50 border ${BORDER_ACCENT}/50 ${TEXT_WHITE} placeholder-gray-400`}
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">Message</label>
+                  <label htmlFor="message" className={`text-sm font-medium ${LIGHTER_CYAN_ACCENT_TEXT}`}>Message</label>
                   <Textarea
                     id="message"
                     name="message"
@@ -145,12 +157,12 @@ export default function Contact() {
                     placeholder="Tell me about your project..."
                     rows={6}
                     required
-                    className="focus:border-cyan-500 focus:ring-cyan-500 resize-none"
+                    className={`focus:border-cyan-800 focus:ring-cyan-800 resize-none bg-gray-700/50 border ${BORDER_ACCENT}/50 ${TEXT_WHITE} placeholder-gray-400`}
                   />
                 </div>
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-700 hover:to-cyan-800 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                  className={`w-full ${BUTTON_GRADIENT_BG} ${TEXT_WHITE} shadow-lg ${SHADOW_CYAN} hover:shadow-xl ${CARD_HOVER_SHADOW} transition-all duration-300`}
                   disabled={isLoading}
                 >
                   {isLoading ? (
@@ -170,11 +182,11 @@ export default function Contact() {
           </Card>
 
           {/* Contact Information Side */}
-          <div className="space-y-6  border-2 p-2 rounded-lg">
+          <div className="space-y-6">
             {/* Contact Info Card */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-gradient-to-br from-cyan-50 to-blue-50 dark:from-cyan-950/30 dark:to-blue-950/30">
+            <Card className={`hover:shadow-xl ${CARD_HOVER_SHADOW} transition-all duration-300 border-2 ${BORDER_ACCENT} shadow-lg ${SHADOW_CYAN} bg-gradient-to-br ${CARD_BG_GRADIENT}`}>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-cyan-700 dark:text-cyan-300">
+                <CardTitle className={`flex items-center gap-2 ${PRIMARY_CYAN_ACCENT_TEXT}`}>
                   <Mail className="h-5 w-5" />
                   Contact Information
                 </CardTitle>
@@ -184,14 +196,14 @@ export default function Contact() {
                   <a 
                     key={index} 
                     href={info.href}
-                    className="flex items-center gap-4 p-3 rounded-lg hover:bg-white/50 dark:hover:bg-white/5 transition-all duration-200 group"
+                    className="flex items-center gap-4 p-3 rounded-lg hover:bg-cyan-900/30 transition-all duration-200 group"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <div className={`w-12 h-12 ${BUTTON_GRADIENT_BG} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
                       <info.icon className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <p className="font-medium text-cyan-800 dark:text-cyan-200">{info.label}</p>
-                      <p className="text-cyan-700/80 dark:text-cyan-300/80">{info.value}</p>
+                      <p className={`font-medium ${TEXT_WHITE}`}>{info.label}</p>
+                      <p className={`${TEXT_WHITE}/70`}>{info.value}</p>
                     </div>
                   </a>
                 ))}
@@ -199,28 +211,26 @@ export default function Contact() {
             </Card>
 
             {/* Availability Card */}
-            <Card className="hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-gradient-to-r from-cyan-500/10 to-blue-500/10 dark:from-cyan-500/5 dark:to-blue-500/5 border-l-4 border-l-cyan-500">
+            <Card className={`hover:shadow-xl ${CARD_HOVER_SHADOW} transition-all duration-300 border-2 ${BORDER_ACCENT} shadow-lg ${SHADOW_CYAN} bg-gradient-to-r from-gray-900 to-gray-800 border-l-4 border-l-cyan-800`}>
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-5 w-5 text-white" />
+                  <div className={`w-10 h-10 bg-cyan-800 rounded-full flex items-center justify-center`}>
+                    <CheckCircle className="h-5 w-5 ${TEXT_WHITE}" />
                   </div>
-                  <h3 className="text-lg font-semibold text-cyan-800 dark:text-cyan-200">Available for Work</h3>
+                  <h3 className={`text-lg font-semibold ${TEXT_WHITE}`}>Available for Work</h3>
                 </div>
-                <p className="text-cyan-700/80 dark:text-cyan-300/80 mb-4">
+                <p className={`${TEXT_WHITE}/70 mb-4`}>
                   I,m currently available for freelance projects and full-time opportunities. 
                   Let,s discuss how we can bring your ideas to life.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge className="bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30">Remote Work</Badge>
-                  <Badge className="bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30">Full-time</Badge>
-                  <Badge className="bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30">Contract</Badge>
-                  <Badge className="bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30">Consulting</Badge>
+                  <Badge className={`${BADGE_BG} ${TEXT_WHITE} ${BADGE_BORDER}`}>Remote Work</Badge>
+                  <Badge className={`${BADGE_BG} ${TEXT_WHITE} ${BADGE_BORDER}`}>Full-time</Badge>
+                  <Badge className={`${BADGE_BG} ${TEXT_WHITE} ${BADGE_BORDER}`}>Contract</Badge>
+                  <Badge className={`${BADGE_BG} ${TEXT_WHITE} ${BADGE_BORDER}`}>Consulting</Badge>
                 </div>
               </CardContent>
             </Card>
-
-          
           </div>
         </div>
       </div>
